@@ -1,0 +1,104 @@
+/* ================= 本地 SRT 样式 (保持不变) ================= */
+#custom-srt-wrapper {
+    position: absolute !important; left: 0 !important; width: 100% !important;
+    text-align: center !important; pointer-events: none !important;
+    z-index: 40 !important; transition: bottom 0.2s ease !important;
+    bottom: var(--bottom-offset, 15%) !important;
+}
+#custom-srt-text {
+    display: inline-block !important;
+    background: rgba(8, 8, 8, var(--bg-opacity, 0.5)) !important;
+    color: #ffffff !important; padding: 0.2em 0.6em !important;
+    font-size: var(--font-size, 24px) !important; border-radius: 4px !important;
+    font-family: "YouTube Noto", Roboto, Arial, sans-serif !important;
+    font-weight: 500 !important; line-height: 1.2 !important;
+    text-shadow: 0 0 2px rgba(0,0,0,0.5) !important;
+    white-space: pre-wrap !important; opacity: 0 !important;
+    transition: opacity 0.2s ease-in-out !important;
+}
+#custom-srt-text.visible { opacity: 1 !important; }
+
+
+/* ================= 原生字幕覆盖样式 (Flex 布局终极修复版) ================= */
+
+/* 1. 最外层容器：改为高度自适应 (height: auto)，作为整体定位，避免 100% 高度导致的定位错乱 */
+.override-native-subs .ytp-caption-window-container {
+    position: absolute !important;
+    bottom: var(--bottom-offset, 15%) !important;
+    left: 0 !important;
+    width: 100% !important;
+    height: auto !important; /* 关键：让高度由字幕内容撑开，不再占满全屏 */
+    top: auto !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    pointer-events: none !important;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important; /* 整体水平居中 */
+    gap: 8px !important; /* 如果是双语字幕，自动保持 8px 的垂直间距 */
+    z-index: 30 !important;
+}
+
+/* 2. 字幕窗口：清除 YouTube 注入的绝对定位，改为相对定位，乖乖待在 Flex 容器里 */
+.override-native-subs .caption-window,
+.override-native-subs .ytp-caption-window-bottom {
+    position: relative !important; 
+    left: auto !important;
+    right: auto !important;
+    top: auto !important;
+    bottom: auto !important;
+    width: auto !important;
+    max-width: 90% !important;
+    margin: 0 !important;
+    margin-left: 0 !important;
+    padding: 0 !important;
+    transform: none !important;
+    text-align: center !important;
+    pointer-events: none !important; 
+}
+
+/* 3. 文本行容器：清除背景和边距 */
+.override-native-subs .captions-text,
+.override-native-subs .caption-visual-line {
+    background: transparent !important;
+    background-color: transparent !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    border: none !important;
+    box-shadow: none !important;
+    text-shadow: none !important;
+    width: auto !important; 
+    left: auto !important;
+    right: auto !important;
+    transform: none !important;
+    display: inline-block !important;
+    text-align: center !important;
+}
+
+/* 4. 核心文字片段：渲染背景、字号 */
+.override-native-subs .ytp-caption-segment {
+    background-color: rgba(8, 8, 8, var(--bg-opacity, 0.5)) !important;
+    color: #ffffff !important;
+    padding: 0.15em 0.5em !important; 
+    border-radius: 4px !important;
+    font-family: "YouTube Noto", Roboto, Arial, sans-serif !important;
+    font-weight: 500 !important;
+    text-shadow: 0 0 2px rgba(0,0,0,0.5) !important;
+    box-shadow: none !important;
+    border: none !important;
+    display: inline-block !important; 
+    font-size: var(--font-size, 24px) !important;
+    line-height: 1.2 !important;
+    margin: 0 !important;
+    letter-spacing: normal !important; 
+    word-wrap: break-word !important;
+}
+
+/* 5. 原生字幕淡入动效 */
+@keyframes nativeSubFade {
+    from { opacity: 0; transform: translateY(5px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+.override-native-subs .captions-text.native-fade-in {
+    animation: nativeSubFade 0.25s ease-out forwards !important;
+}

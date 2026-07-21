@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="popup.css">
+</head>
+<body>
+    <h3>🎬 YouTube 本地/原生字幕</h3>
+    
+    <div class="section">
+        <label>1. 选择本地 SRT 文件 <button id="clearSrt" class="btn-small">清除</button></label>
+        <input type="file" id="srtFile" accept=".srt">
+    </div>
+
+    <div class="section switch-section">
+        <label for="overrideNative">覆盖原生字幕样式</label>
+        <label class="switch">
+            <input type="checkbox" id="overrideNative">
+            <span class="slider round"></span>
+        </label>
+    </div>
+
+    <hr class="divider">
+
+    <div class="section">
+        <label>字体大小: <span class="val" id="fontSizeVal">24px</span></label>
+        <input type="range" id="fontSize" min="14" max="60" value="24">
+    </div>
+
+    <div class="section">
+        <label>底部偏移: <span class="val" id="bottomVal">15%</span></label>
+        <input type="range" id="bottomOffset" min="0" max="40" value="15">
+    </div>
+
+    <div class="section">
+        <label>背景透明度: <span class="val" id="opacityVal">50%</span></label>
+        <input type="range" id="bgOpacity" min="0" max="100" value="50">
+    </div>
+
+    <div id="status" class="status"></div>
+
+    <script src="popup.js"></script>
+</body>
+</html>

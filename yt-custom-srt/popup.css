@@ -1,0 +1,54 @@
+body {
+    width: 280px;
+    padding: 15px;
+    font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+    font-size: 13px;
+    color: #0f0f0f;
+}
+h3 {
+    margin: 0 0 15px 0;
+    font-size: 16px;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 8px;
+}
+.section { margin-bottom: 15px; }
+label {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-weight: 500;
+    margin-bottom: 5px;
+}
+.val { font-weight: normal; color: #606060; font-size: 12px; }
+input[type="file"] { width: 100%; font-size: 12px; }
+input[type="range"] { width: 100%; }
+.btn-small {
+    font-size: 11px; padding: 2px 6px; cursor: pointer;
+    background: #f2f2f2; border: 1px solid #ccc; border-radius: 4px;
+}
+.btn-small:hover { background: #e6e6e6; }
+.status {
+    margin-top: 10px; font-size: 12px; color: #0073e6;
+    text-align: center; min-height: 16px;
+}
+
+/* 新增：开关与分割线样式 */
+.divider { border: 0; border-top: 1px solid #eee; margin: 15px 0; }
+.switch-section {
+    display: flex; justify-content: space-between; align-items: center;
+    margin-bottom: 20px;
+}
+.switch { position: relative; display: inline-block; width: 40px; height: 22px; }
+.switch input { opacity: 0; width: 0; height: 0; }
+.slider {
+    position: absolute; cursor: pointer; top: 0; left: 0; right: 0; bottom: 0;
+    background-color: #ccc; transition: .3s;
+}
+.slider:before {
+    position: absolute; content: ""; height: 16px; width: 16px;
+    left: 3px; bottom: 3px; background-color: white; transition: .3s;
+}
+input:checked + .slider { background-color: #ff0000; /* YouTube 红色 */ }
+input:checked + .slider:before { transform: translateX(18px); }
+.slider.round { border-radius: 22px; }
+.slider.round:before { border-radius: 50%; }
