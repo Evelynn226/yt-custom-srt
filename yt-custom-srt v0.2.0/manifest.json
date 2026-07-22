@@ -1,0 +1,26 @@
+{
+  "manifest_version": 3,
+  "name": "YouTube Custom SRT Subtitles",
+  "version": "0.2.0",
+  "description": "加载本地 SRT 字幕并自定义样式（位置/大小/透明度），接近原生体验。",
+  "permissions": ["storage"],
+  "host_permissions": ["*://*.youtube.com/*"],
+  "content_scripts": [
+    {
+      "matches": ["*://*.youtube.com/*"],
+      "js": ["content.js"],
+      "css": ["content.css"],
+      "run_at": "document_end"
+    }
+  ],
+  "action": {
+    "default_popup": "popup.html",
+    "default_title": "YT 字幕设置"
+  },
+  "icons": {
+    "16": "icon.png",
+    "48": "icon.png",
+    "128": "icon.png"
+  },
+  "minimum_chrome_version": "109"
+}

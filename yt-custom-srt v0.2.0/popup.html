@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>YT 字幕设置</title>
+    <link rel="stylesheet" href="popup.css">
+</head>
+<body>
+    <h3>🎬 YouTube 本地/原生字幕</h3>
+
+    <div class="section">
+        <label for="srtFile">1. 选择本地 SRT 文件 <button id="clearSrt" class="btn-small" aria-label="清除字幕">清除</button></label>
+        <input type="file" id="srtFile" accept=".srt" aria-describedby="file-help">
+        <span id="file-help" class="file-help">或拖拽 .srt 文件到此处</span>
+    </div>
+
+    <div class="section switch-section">
+        <label for="overrideNative">覆盖原生字幕样式</label>
+        <label class="switch">
+            <input type="checkbox" id="overrideNative" role="switch" aria-checked="false">
+            <span class="slider round"></span>
+        </label>
+    </div>
+
+    <hr class="divider">
+
+    <div class="section">
+        <label for="fontSize">字体大小: <span class="val" id="fontSizeVal">24px</span></label>
+        <input type="range" id="fontSize" min="14" max="60" value="24" aria-label="字体大小">
+    </div>
+
+    <div class="section">
+        <label for="bottomOffset">底部偏移: <span class="val" id="bottomVal">15%</span></label>
+        <input type="range" id="bottomOffset" min="0" max="40" value="15" aria-label="底部偏移">
+    </div>
+
+    <div class="section">
+        <label for="bgOpacity">背景透明度: <span class="val" id="opacityVal">50%</span></label>
+        <input type="range" id="bgOpacity" min="0" max="100" value="50" aria-label="背景透明度">
+    </div>
+
+    <div id="status" class="status" role="status" aria-live="polite"></div>
+
+    <script src="popup.js"></script>
+</body>
+</html>
